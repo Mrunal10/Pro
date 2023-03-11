@@ -1,0 +1,91 @@
+.pinfo{
+    margin-top: 30px;
+    margin-right: 900px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 30px;
+ 
+    color: rgb(103, 88, 170);
+}
+.perp{
+    margin-left: 98px;
+    font-family: 'Times New Roman', Times, serif;
+   font-size: 20px;
+   
+    color: rgb(103, 88, 170);
+}
+body{
+    background-color: rgb(209, 212, 218);
+}
+.container{
+    margin-left: 80px;
+    height: 650px;
+    background-color: white;
+    border: 2px ;
+    /* margin: 10px; */
+    
+   
+}
+.underline{
+    padding-top: 10px;
+  text-align: left;
+  color:rgb(103, 88, 170); ;
+}
+
+.h6pi{
+    text-align: right;
+    color: rgb(103, 88, 170);
+}
+.identity{
+    text-align: left;
+    margin-left: 0%;
+    color: rgb(103, 88, 170);
+}
+b{
+    text-align: left;
+    margin-bottom: -20%;
+}
+.form-control{
+    border-top-style: hidden;
+        border-right-style: hidden;
+        border-left-style: hidden;
+        width: 50%;
+        color: rgb(103, 88, 170);
+}
+.form-select{
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    width: 50%;
+    color: rgb(103, 88, 170);
+
+}
+
+.col-md-6 {
+    flex: 0 0 auto;
+    width: 34%;
+ 
+  }
+  .col-md-2{
+    flex: 0 0 auto;
+    width: 33%;
+   
+  
+  }
+  .col-md-4{
+    flex: 0 0 auto;
+    width: 33%;
+    
+   
+  }
+ .last{
+     text-align: center;
+ }
+ .continue{
+     background-color: red;
+     padding: 10px;
+     border: none;
+     color: white;
+     margin-top: 110px;
+     width: 20%;
+     margin-left: 400px;
+ }
