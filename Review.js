@@ -10,37 +10,46 @@ const Review = () => {
    const current = new Date();
    const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
 
-   useEffect( ()=>{
-    Axios.get("http://localhost:3001/read",{
-      params: {feedbackId: location.state.feedbackId }
-    }).then((response)=>{
-      console.log(response)
-      setDatalist(response.data)
+   useEffect(() => {
+    fetchFeedback();
   })
-   },[])
-  const handlereviewclick=()=>{
-    navigate("/confirmation")
-
-
+ 
+  const fetchFeedback=async()=>{
+    const response=await Axios.get('http://localhost:3001/read', {
+      params: {feedbackId: location.state.feedbackId }});
+      setDatalist([response.data]);
   }
 
-  const editPersonal = () =>{
-    navigate("/personalinformation")
+  const handlereviewclick=()=>{
+    navigate("/confirmation");
+  }
+
+  const editPersonalInfo = async() =>{
+    await Axios.delete('http://localhost:3001/delete', {
+      params: {feedbackId: location.state.feedbackId }});
+    navigate("/personalinformation", {state:{data: datalist}});
   } 
+
+  
+  const editCommonDetails = async() =>{
+    await Axios.delete('http://localhost:3001/delete', {
+      params: {feedbackId: location.state.feedbackId }});
+    navigate("/comment", {state:{data: datalist}});
+  } 
+
   return (
     <div>
       <h1 className="reviewtitle">Review Your Information </h1>
       <p className="reviewpara">Please confirm that below information is correct</p>
       <div className="reviewcontainer1">
             <h4 className="reviewexp">Your Experience</h4>
-            
             <p className="reviewfeed">What is your feedback about?</p>
             <p className="reviewcomplaint">Given a Compliment <br/> - Airport Experience</p>
            
       </div>
       <div className="reviewcontainer2">
         <h4 className="reviewperson">Personal Information</h4>
-        <button onClick={editPersonal}>Edit</button>
+        <button className="revieweditpersonal" onClick={editPersonalInfo}>Edit</button>
         <div>
          {datalist.map( (val,key)=>{
            return(
@@ -87,10 +96,21 @@ const Review = () => {
              <h6 className="reviewairlines">"Delta Air lines / Skylines"</h6>
       </div>
       <div className="reviewcontainer3">
+      
       <h4 className="reviewexp">Comment Details</h4>
+      <button className="revieweditcomment" onClick={editCommonDetails}>Edit</button>
       
       <p className="reviewflight">Flight Information</p>
       <p className="reviewdate">{date}</p>
+
+      <p className="reviewconfirmnumber">Flight Number </p>
+        {datalist.map ( (val,key) =>{
+          return(
+            <div key={key}>
+              <h6 className="reviewfetchconfirm">{val.confirmationnumber}</h6>
+              </div>
+          )
+        })}
         
         <p className="reviewticketnumber">Ticket Number </p>
         {datalist.map ( (val,key) =>{
